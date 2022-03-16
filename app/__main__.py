@@ -8,7 +8,11 @@ short_sword = Weapon()
 leather_armor = Armor()
 character = Player(weapon=short_sword, armor=leather_armor)
 
-screen = Screen()
-screen.clear()
-screen.render('A battle emerges..\n')
-screen.display_player_info(character)
+def game_loop():
+    screen = Screen()
+    screen.clear()
+    screen.render('A battle emerges..\n')
+    screen.display_player_info(character)
+
+if __name__ == '__main__':
+    game_loop()
