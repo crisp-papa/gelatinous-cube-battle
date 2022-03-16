@@ -1,20 +1,20 @@
-class Player:
+class Actor:
   def __init__(
       self, 
       name = 'Wanderer', 
       character_class = 'Soldier', 
-      max_hp = 20,
-      current_hp = 20,
-      to_hit = 10,
+      hitpoint_max = 20,
+      hitpoint_current = 20,
+      hit_modifier = 10,
       level = 1,
       weapon = None,
       armor = None
     ):
     self.name = name
     self.character_class = character_class
-    self.max_hp = max_hp
-    self.current_hp = current_hp
-    self.to_hit = to_hit
+    self.hitpoint_max = hitpoint_max
+    self.hitpoint_current = hitpoint_current
+    self.hit_modifier = hit_modifier
     self.level = level
     self.weapon = weapon
     self.armor = armor

@@ -1,0 +1,124 @@
+// Create / use database
+use('gelatinous');
+
+// Delete the old collections if they exist
+db.enemy.drop();
+db.armor.drop();
+db.weapon.drop();
+db.damage.drop();
+db.class.drop();
+
+// Insert a few documents into the enemy collection.
+db.enemy.insertMany([
+  { 
+    '_id': 1,
+    'name': 'Imp',
+    'character_class_id': 1, // Rogue
+    'hitpoint_max': 8,
+    'hitpoint_current': 10,
+    'hit_modifier': 10,
+    'level': 1,
+    'weapon_id': 1,
+    'armor_id': 1
+  },
+  { 
+    '_id': 2, 
+    'name': 'Skeleton', 
+    'character_class_id': 2, // Soldier
+    'hitpoint_max': 12, 
+    'hitpoint_current': 12,
+    'hit_modifier': 10, 
+    'current_level': 1, 
+    'weapon_id': 2,          // Long sword
+    'armor_id': 1
+  },
+  { 
+    '_id': 3, 
+    'name': 'Skeleton Mage', 
+    'character_class_id': 3, // Wizard
+    'hitpoint_max': 24, 
+    'hitpoint_current': 24,
+    'hit_modifier': 10,
+    'current_level': 1, 
+    'weapon_id': 3,          // Staff
+    'armor_id': 3            // Robes
+  },
+]);
+
+db.armor.insertMany([
+  {
+    '_id': 1,
+    'name': 'Leather Armor',
+    'armor_defense': 2,
+    'magic_defense': 2
+  },
+  {
+    '_id': 2,
+    'name': 'Chain Shirt',
+    'armor_defense': 4,
+    'magic_defense': 0
+  },
+  {
+    '_id': 3,
+    'name': 'Robes',
+    'armor_defense': 1,
+    'magic_defense': 3
+  },
+]);
+
+db.weapon.insertMany([
+  {
+    '_id': 1,
+    'name': 'Stiletto',
+    'attack_speed': 9,
+    'min_damage': 1,
+    'max_damage': 5,
+    'damage_ids': [ 1 ]         // Piercing
+  },
+  {
+    '_id': 2,
+    'name': 'Long Sword',
+    'attack_speed': 4,
+    'min_damage': 3,
+    'max_damage': 8,
+    'damage_ids': [ 2, 1 ]      // Slashing, Piercing
+  },
+  {
+    '_id': 3,
+    'name': 'Staff',
+    'attack_speed': 1,
+    'min_damage': 4,
+    'max_damage': 10,
+    'damage_ids': [ 3 ]         // Magic
+  },
+]);
+
+db.damage.insertMany([
+  {
+    '_id': 1,
+    'name': 'Piercing'
+  },
+  {
+    '_id': 2,
+    'name': 'Slashing'
+  },
+  {
+    '_id': 3,
+    'name': 'Magic'
+  },
+]);
+
+db.class.insertMany([
+  {
+    '_id': 1,
+    'name': 'Rogue'
+  },
+  {
+    '_id': 1,
+    'name': 'Soldier'
+  },
+  {
+    '_id': 1,
+    'name': 'Wizard'
+  },
+]);

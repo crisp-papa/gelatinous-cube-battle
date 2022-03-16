@@ -4,11 +4,14 @@ class Screen:
   def clear(self):
     system('clear') if name == 'posix' else system('cls')
   
-  def display_player_info(self, player):
-    print(f'{player.name}, a level {player.level} {player.character_class}')
-    print(f'Health: {player.current_hp}/{player.max_hp}')
-    print(f'Weapon: {player.weapon.name}')
-    print(f'Armor: {player.armor.name}')
+  def display_actor_info(self, actor):
+    print(f'{actor.name}, a level {actor.level} {actor.character_class}')
+    print(f'Health: {actor.hitpoint_current}/{actor.hitpoint_max}')
+    print(f'Weapon: {actor.weapon.name}')
+    print(f'Hit Modifier: {actor.weapon.hit_modifier}')
+    print(f'Armor: {actor.armor.name}')
+    print(f'Armor Defense: {actor.armor.armor_defense}')
+    print(f'Magic Defense: {actor.armor.magic_defense}')
 
   def render(self, *display):
     for item in display:
