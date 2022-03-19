@@ -1,0 +1,1 @@
+"""Defend function. Negates a percentage of damage this turn."""

@@ -1,0 +1,1 @@
+"""Revenge function. Do nothing during your turn for double damage on your next attack."""
