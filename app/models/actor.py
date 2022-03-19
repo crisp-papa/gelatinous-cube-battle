@@ -1,11 +1,12 @@
 from app.models.armor import Armor
+from app.models.character_class import CharacterClass
 from app.models.weapon import Weapon
 
 class Actor:
   def __init__(
       self, 
       name = 'Wanderer', 
-      character_class = 'Soldier', 
+      character_class = CharacterClass(name='Soldier'), 
       hitpoint_max = 20,
       hitpoint_current = 20,
       hit_modifier = 10,

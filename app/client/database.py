@@ -22,11 +22,14 @@ class Database:
       pprint(serverStatusResult)
   
   def get_enemy_by_id(self, id):
-    return self.db.enemy.find({"_id": id})
+    return self.db.enemy.find_one({"_id": id})
 
   def get_weapon_by_id(self, id):
-    return self.db.weapon.find({"_id": id})
+    return self.db.weapon.find_one({"_id": id})
   
   def get_armor_by_id(self, id):
-    return self.db.armor.find({"_id": id})
+    return self.db.armor.find_one({"_id": id})
+  
+  def get_character_class_by_id(self, id):
+    return self.db.character_class.find_one({"_id": id})
   

@@ -16,7 +16,7 @@ class Attack():
       damage = die_roll(minimum=assailant.weapon.min_damage, maximum=assailant.weapon.max_damage)
       damage = damage - defender.armor.defense_value()
       if damage > 0:
-        defender.hitpoint_current - damage
+        defender.hitpoint_current -= damage
         print(f'{assailant.name} hit {defender.name} with their {assailant.weapon.name} for {damage} damage!!')
       else:
         print(f'{assailant.name} wrought no damage.')

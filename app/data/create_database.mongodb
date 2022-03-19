@@ -6,7 +6,7 @@ db.enemy.drop();
 db.armor.drop();
 db.weapon.drop();
 db.damage.drop();
-db.class.drop();
+db.character_class.drop();
 
 // Insert a few documents into the enemy collection.
 db.enemy.insertMany([
@@ -15,7 +15,7 @@ db.enemy.insertMany([
     'name': 'Imp',
     'character_class_id': 1, // Rogue
     'hitpoint_max': 8,
-    'hitpoint_current': 10,
+    'hitpoint_current': 8,
     'hit_modifier': 10,
     'level': 1,
     'weapon_id': 1,
@@ -108,17 +108,17 @@ db.damage.insertMany([
   },
 ]);
 
-db.class.insertMany([
+db.character_class.insertMany([
   {
     '_id': 1,
     'name': 'Rogue'
   },
   {
-    '_id': 1,
+    '_id': 2,
     'name': 'Soldier'
   },
   {
-    '_id': 1,
+    '_id': 3,
     'name': 'Wizard'
   },
 ]);
