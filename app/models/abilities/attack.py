@@ -21,5 +21,5 @@ class Attack():
       else:
         print(f'{assailant.name} wrought no damage.')
     else:
-      print('You missed...')
+      print(f'{assailant.name} missed...')
   

@@ -9,9 +9,9 @@ class Actor:
       character_class = CharacterClass(name='Soldier'), 
       hitpoint_max = 20,
       hitpoint_current = 20,
-      hit_modifier = 10,
+      hit_modifier = 3,
       level = 1,
-      dodge = 0,
+      dodge = 10,
       weapon = Weapon(),
       armor = Armor(),
       abilities = []

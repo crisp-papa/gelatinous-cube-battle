@@ -16,7 +16,7 @@ db.enemy.insertMany([
     'character_class_id': 1, // Rogue
     'hitpoint_max': 8,
     'hitpoint_current': 8,
-    'hit_modifier': 10,
+    'hit_modifier': 3,
     'level': 1,
     'weapon_id': 1,
     'armor_id': 1
@@ -27,7 +27,7 @@ db.enemy.insertMany([
     'character_class_id': 2, // Soldier
     'hitpoint_max': 12, 
     'hitpoint_current': 12,
-    'hit_modifier': 10, 
+    'hit_modifier': 4, 
     'current_level': 1, 
     'weapon_id': 2,          // Long sword
     'armor_id': 1
@@ -38,7 +38,7 @@ db.enemy.insertMany([
     'character_class_id': 3, // Wizard
     'hitpoint_max': 24, 
     'hitpoint_current': 24,
-    'hit_modifier': 10,
+    'hit_modifier': 5,
     'current_level': 1, 
     'weapon_id': 3,          // Staff
     'armor_id': 3            // Robes
@@ -61,19 +61,19 @@ db.armor.insertMany([
     '_id': 1,
     'name': 'Leather Armor',
     'armor_defense': 2,
-    'magic_defense': 2
+    'magic_defense': 1
   },
   {
     '_id': 2,
     'name': 'Chain Shirt',
-    'armor_defense': 4,
+    'armor_defense': 3,
     'magic_defense': 0
   },
   {
     '_id': 3,
     'name': 'Robes',
     'armor_defense': 1,
-    'magic_defense': 3
+    'magic_defense': 2
   },
 ]);
 
