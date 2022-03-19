@@ -1,7 +1,5 @@
 from app.models.armor import Armor
 from app.models.weapon import Weapon
-from app.models.abilities.attack import Attack
-
 
 class Actor:
   def __init__(
@@ -12,9 +10,10 @@ class Actor:
       hitpoint_current = 20,
       hit_modifier = 10,
       level = 1,
+      dodge = 0,
       weapon = Weapon(),
       armor = Armor(),
-      abilities = [ Attack() ]
+      abilities = []
     ):
     self.name = name
     self.character_class = character_class
@@ -24,5 +23,6 @@ class Actor:
     self.level = level
     self.weapon = weapon
     self.armor = armor
-    # prototypes
     self.abilities = abilities
+    # prototypes
+    self.dodge = dodge

@@ -1,4 +1,3 @@
 import random
-def die_roll(min_die, max_die):
-    x = random.randint(1, max_die)
-    return x
+def die_roll(minimum = 1, maximum = 2):
+    return random.randint(minimum, maximum)
