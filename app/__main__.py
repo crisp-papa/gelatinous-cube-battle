@@ -67,8 +67,14 @@ def battle_setup():
     abilities=[Attack()]
   )
 
+  # Fight a random enemy
   random_enemy = database.get_enemy_by_id(die_roll(1, 3))
   random_enemy_weapon = database.get_weapon_by_id(die_roll(1, 3))
+
+  # Fight the cube directly if you dare...
+  # random_enemy = database.get_enemy_by_id(4)
+  # random_enemy_weapon = database.get_weapon_by_id(random_enemy['weapon_id'])
+  
   random_enemy_class = database.get_character_class_by_id(random_enemy['character_class_id'])
   enemy = Actor(
     name = random_enemy['name'],
