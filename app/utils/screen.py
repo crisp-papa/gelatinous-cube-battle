@@ -4,16 +4,19 @@ class Screen:
   def clear(self):
     system('clear') if name == 'posix' else system('cls')
   
-  def display_actor_info(self, actor, verbose=False):
-    print(f'{actor.name}, a level {actor.level} {actor.character_class.name}')
-    print(f'Health: {actor.hitpoint_current}/{actor.hitpoint_max}')
-    print(f'Weapon: {actor.weapon.name}')
+  def build_actor_info(self, actor, verbose=False):
+    actor_info = []
+    actor_info.append(f'{actor.name}, a level {actor.level} {actor.character_class.name}\n')
+    actor_info.append(f'Health: {actor.hitpoint_current}/{actor.hitpoint_max}\n')
+    actor_info.append(f'Weapon: {actor.weapon.name}')
     
     if (verbose):
-      print(f'Hit Modifier: {actor.weapon.hit_modifier}')
-      print(f'Armor: {actor.armor.name}')
-      print(f'Armor Defense: {actor.armor.armor_defense}')
-      print(f'Magic Defense: {actor.armor.magic_defense}')
+      actor_info.append(f'Hit Modifier: {actor.weapon.hit_modifier}')
+      actor_info.append(f'Armor: {actor.armor.name}')
+      actor_info.append(f'Armor Defense: {actor.armor.armor_defense}')
+      actor_info.append(f'Magic Defense: {actor.armor.magic_defense}')
+
+    return actor_info
 
   def render(self, *display):
     for item in display:

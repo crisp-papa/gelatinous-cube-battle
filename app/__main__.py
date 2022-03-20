@@ -54,6 +54,80 @@ def parse_command_line_arguments():
 
   return parser.parse_args()
 
+def curses_attempt():
+  import curses
+
+  def main(stdscr):
+    STDSCR_WIDTH = 100
+    STDSCR_HEIGHT = 24
+    stdscr.resize(STDSCR_HEIGHT, STDSCR_WIDTH)
+    while (True):
+      # Clear screen
+      stdscr.clear()
+      stdscr.box()
+
+      screen = Screen()
+
+      # Display panel, should probably be a function
+      display_panel_height = 24
+      display_panel_width = 40
+      display_panel_y = 0
+      display_panel_x = STDSCR_WIDTH - display_panel_width
+
+      display_panel = curses.newwin(
+        display_panel_height,
+        display_panel_width,
+        display_panel_y,
+        display_panel_x
+      )
+      display_panel.box()
+      display_panel.overlay(stdscr)
+
+       # Display game log within panel, should probably be a function
+      game_log_height = display_panel_height // 2
+      game_log_width = display_panel_width
+      game_log_y = display_panel_y
+      game_log_x = display_panel_x
+      game_log_display = curses.newwin(
+        game_log_height,
+        game_log_width,
+        game_log_y,
+        game_log_x
+      )
+
+      for index, info_string in enumerate(['Thy smash a key!!', "Thine key hath been smashed!!", "Game log will go here eventually!!"]):
+        game_log_display.addstr(index + 1, 1, info_string)
+
+      game_log_display.box()
+      game_log_display.overlay(stdscr)
+      
+      # Display character info within panel, should probably be a function
+      character_info_height = display_panel_height // 2 + 1
+      character_info_width = display_panel_width
+      character_info_y = display_panel_height // 2 - 1
+      character_info_x = display_panel_x
+      character_info_display = curses.newwin(
+        character_info_height,
+        character_info_width,
+        character_info_y,
+        character_info_x
+      )
+
+      for index, info_string in enumerate(screen.build_actor_info(character, True)):
+        character_info_display.addstr(index + 1, 1, info_string)
+
+      character_info_display.box()
+      character_info_display.overlay(stdscr)
+
+      stdscr.refresh()
+      user_input = stdscr.getkey()
+
+      if (user_input == 'Q'):
+        curses.echo()
+        return False
+
+  curses.wrapper(main)
+
 def battle_setup():
   random_weapon = database.get_weapon_by_id(die_roll(1, 3))
   character = Actor(
@@ -98,4 +172,5 @@ if __name__ == '__main__':
   database = Database(host=cli.database_host, port=cli.database_port, username=cli.database_username, password=cli.database_password)
   
   character, enemy = battle_setup()
-  game_loop()
+  # game_loop()
+  curses_attempt()
