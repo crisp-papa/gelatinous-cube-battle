@@ -7,6 +7,8 @@ db.armor.drop();
 db.weapon.drop();
 db.damage.drop();
 db.character_class.drop();
+db.character.drop();
+db.log.drop();
 
 // Insert a few documents into the enemy collection.
 db.enemy.insertMany([
@@ -59,7 +61,7 @@ db.enemy.insertMany([
 db.armor.insertMany([
   {
     '_id': 1,
-    'name': 'Leather Armor',
+    'name': 'Leather Jacket',
     'armor_defense': 2,
     'magic_defense': 1
   },
@@ -149,3 +151,27 @@ db.character_class.insertMany([
     'name': 'Goo pile'
   }
 ]);
+
+db.character.insertOne(
+  {
+    '_id': 1,
+    'name': 'Test Character',
+    'character_class': 'Soldier',
+    'hitpoint_max': 99,
+    'hitpoint_current': 99,
+    'hit_modifier': 0,
+    'level': 99,
+    'weapon_id': 1,
+    'armor_id': 1,
+    'abilities': [],
+    'dodge': 0
+  }
+)
+
+db.log.insertOne(
+  {
+    '_id': ObjectId(),
+    'character_id' : 1,
+    'message': 'Welcome to the fold...'
+  }
+)

@@ -1,11 +1,13 @@
 import curses
 from app.utils.display_utils import DisplayUtils
+from app.utils.keyhandler import keyhandler
 
-def main(stdscr, character):
+def main(stdscr, character, database):
   STDSCR_WIDTH = 100
   STDSCR_HEIGHT = 24
   stdscr.resize(STDSCR_HEIGHT, STDSCR_WIDTH)
   display_utils = DisplayUtils()
+
   while (True):
     # Clear screen
     stdscr.clear()
@@ -76,8 +78,6 @@ def main(stdscr, character):
     character_info_display.overlay(stdscr)
 
     stdscr.refresh()
-    user_input = stdscr.getkey()
 
-    if (user_input == 'Q'):
-      curses.echo()
-      return False
+    user_input = stdscr.getkey()
+    return keyhandler(user_input)
