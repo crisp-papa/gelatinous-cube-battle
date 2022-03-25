@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 from pprint import pprint
 
 class Database:
@@ -27,9 +28,37 @@ class Database:
   def get_weapon_by_id(self, id):
     return self.db.weapon.find_one({"_id": id})
   
+  def get_weapon_by_name(self, name):
+    return self.db.weapon.find_one({"name": name})
+  
   def get_armor_by_id(self, id):
     return self.db.armor.find_one({"_id": id})
+
+  def get_armor_by_name(self, name):
+    return self.db.armor.find_one({"name": name})
   
   def get_character_class_by_id(self, id):
     return self.db.character_class.find_one({"_id": id})
+  
+  def get_character_class_by_name(self, name):
+    return self.db.character_class.find_one({"name": name})
+
+  def save_character_data(self, character):
+    character_weapon = self.get_weapon_by_name(character.weapon.name)
+    character_armor = self.get_armor_by_name(character.armor.name)
+    character_class = self.get_character_class_by_name(character.character_class.name)
+    return self.db.character.insert_one(
+      {
+        '_id': ObjectId(),
+        'name': character.name,
+        'character_class_id': character_class['_id'],
+        'hitpoint_max': character.hitpoint_max,
+        'hitpoint_current': character.hitpoint_current,
+        'hit_modifier': character.hit_modifier,
+        'level': character.level,
+        'weapon_id': character_weapon['_id'],
+        'armor_id': character_armor['_id'],
+        'dodge': character.dodge
+      }
+    )
   
