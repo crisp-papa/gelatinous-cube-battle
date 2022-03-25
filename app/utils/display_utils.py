@@ -1,6 +1,6 @@
 from os import system, name
 
-class Screen:
+class DisplayUtils:
   def clear(self):
     system('clear') if name == 'posix' else system('cls')
   
@@ -20,11 +20,11 @@ class Screen:
 
   def render(self, *display):
     for item in display:
-      print(f'{item}')
+      return (f'{item}')
       
   def display_menu(self, character):
     for ability in character.abilities:
-      print(ability.name)
+      return(ability.name)
     
   def side_by_side(strings, size=30, space=4):
     strings = list(strings)
