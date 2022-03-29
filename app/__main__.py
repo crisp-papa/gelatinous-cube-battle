@@ -5,7 +5,7 @@ from app.models.armor import Armor
 from app.models.abilities.attack import Attack
 from app.utils.display_utils import DisplayUtils
 from app.client.database import Database
-from app.client.curses import main
+from app.client.curses import CursesClient
 
 from app.utils import die_roll
 import curses
@@ -44,7 +44,7 @@ def character_setup():
 if __name__ == '__main__':
   cli = parse_command_line_arguments()
   database = Database(host=cli.database_host, port=cli.database_port, username=cli.database_username, password=cli.database_password)
-
   character = character_setup()
-  database.save_character_data(character)
-  curses.wrapper(main, character, database)
+  curses_client = CursesClient(character, database)
+
+  curses.wrapper(curses_client.main)
