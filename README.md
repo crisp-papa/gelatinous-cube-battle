@@ -2,7 +2,7 @@
 Originally coded in 2015 while learning python, Gelatinous Cube Battle (battle.py) was a prototype engine using [d20](https://en.wikipedia.org/wiki/D20_System) inspired rules for battle written in the procedural style.
 There is also an updated version written in Python 3 object oriented style.
 
-## Run Battle.py
+## Run Battle.py - Original
 Play the original simply with `python battle.py`. The script takes no arguments and runs in your terminal. 
 
 ## Updated Version

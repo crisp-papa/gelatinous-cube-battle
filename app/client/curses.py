@@ -10,8 +10,6 @@ class CursesClient:
     self.displays = {}
 
   def setup_displays(self, stdscr):
-    display_utils = DisplayUtils()
-
     # Subtracting 2 from these values to account for the border of the window
     game_panel_height = Constants.STDSCR_HEIGHT - 2
     game_panel_width = int(Constants.STDSCR_WIDTH * .64 - 2)
@@ -25,7 +23,7 @@ class CursesClient:
       game_panel_x
     )
     game_panel.overlay(stdscr)
-    self.displays['game_panel'] = game_panel
+    
 
     # Display panel, essentially just the bordered window to attach other display windows to
     display_panel_height = Constants.STDSCR_HEIGHT
@@ -74,10 +72,16 @@ class CursesClient:
       character_info_x
     )
 
+    display_utils = DisplayUtils()
     for index, info_string in enumerate(display_utils.build_actor_info(self.character, True)):
       character_info_display.addstr(index + 1, 1, info_string)
 
     character_info_display.overlay(stdscr)
+
+    self.displays['stdscr'] = stdscr
+    self.displays['game_panel'] = game_panel
+    self.displays['display_panel'] = display_panel
+    self.displays['game_log'] = game_log_panel
     self.displays['character_info'] = character_info_display
 
     stdscr.refresh()
@@ -87,7 +91,6 @@ class CursesClient:
     stdscr.clear()
     stdscr.box()
     self.setup_displays(stdscr)
-    self.displays['stdscr'] = stdscr
     keyhandler = Keyhandler(self.character, self.database, self.displays)
 
     while (True):
